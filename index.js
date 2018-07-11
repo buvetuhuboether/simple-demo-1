@@ -9,6 +9,7 @@ const path = require( 'path' );
 const app = express();
 
 app.set( 'port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000 );
+app.set( 'ip', process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0' );
 app.use( morgan( 'dev' ) );
 app.use( express.static( path.join( __dirname, 'public' ) ) );
 
@@ -48,6 +49,7 @@ app.post( '/bill_declined/:id', ( req, res ) => {
     res.sendStatus( 200 );
 });
 
-server.listen( app.get( 'port' ), () => {
-    console.log( 'Server listening on port ' + server.address().port );
+server.listen( app.get( 'port' ), app.get( 'ip' ), () => {
+    const { port, address } = server.address();
+    console.log( `Server listening ${address} on port ${port}` );
 });
