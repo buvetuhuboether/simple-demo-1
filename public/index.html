@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style type="text/css">
+        .errorMsg {
+            position:absolute;
+            left:230px;
+            width:300px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <input id="start" type="button" value="Начать прием купюр">
+    <div id="caption" style="display: none">
+        Соединение установлено
+        <div id="accepted_amount">0</div>
+    </div>
+    <input id="accepted_btn" type="button" value="Зачислить" style="display: none">
+    <span id="declined" class="errorMsg" style="display: none">Ошибка распознавания банкноты</span>
+    <script src="/app.js"></script>
+</body>
+</html>
