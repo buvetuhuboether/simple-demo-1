@@ -39,8 +39,10 @@ io.on( 'connection', socket => {
 app.post( '/bill_accepted/:id/:value', ( req, res ) => {
     const { id, value } = req.params;
     const socket = sockets.get( id.toString() );
-    socket.clientData.value += parseInt( value );
-    if( socket ) socket.emit( 'accepted', socket.clientData.value );
+    if( socket ) {
+        socket.clientData.value += parseInt( value ) || 0;
+        socket.emit( 'accepted', socket.clientData.value );
+    }
     res.sendStatus( 200 );
 });
 
