@@ -28,6 +28,8 @@ io.on( 'connection', socket => {
 
     console.log( `Client connected, сid: ${socket.clientData.id}` );
 
+    socket.emit( 'cid', socket.clientData.id );
+
     socket.on( 'disconnect', () => {
         console.log( `Client disconnected, сid: ${socket.clientData.id}` );
         sockets.delete( socket.id );

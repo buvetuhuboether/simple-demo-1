@@ -14,6 +14,9 @@ start.addEventListener( 'click', () => {
     socket.on( 'disconnect', () => {
         console.log( 'Server disconnected...' );
     });
+    socket.on( 'cid', cid => {
+        console.log( 'cid', cid );
+    });
     socket.on( 'accepted', data => {
         console.log( 'accepted', data );
         updateAcceptedCaption( data );
